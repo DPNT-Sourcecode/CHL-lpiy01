@@ -70,9 +70,17 @@ public class CheckliteSolution
     		product.incrementQuantityToBePaidFor();
     	}
     	
+    	// Apply "buy quantity X , get product Y free" offers in each product.
+    	Iterator<Map.Entry<String, Product>> iterator = priceTable.entrySet().iterator();
+    	while (iterator.hasNext())
+    	{
+    		Map.Entry<String, Product> entry = iterator.next();
+    		entry.getValue().applyOfferBuyXGetYFree();
+    	}
+    	
     	// Calculate grand total using quantities for each product.
     	int grandTotal = 0;
-    	Iterator<Map.Entry<String, Product>> iterator = priceTable.entrySet().iterator();
+    	iterator = priceTable.entrySet().iterator();
     	while (iterator.hasNext())
     	{
     		Map.Entry<String, Product> entry = iterator.next();
@@ -81,3 +89,4 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
+
