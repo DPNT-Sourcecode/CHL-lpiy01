@@ -8,6 +8,7 @@ public class Product
 	private final String sku;
 	private final int standardPrice;
 	private int quantityToBePaidFor;
+	private int quantityFree;
 	
 	private final List<Offer> offers = new ArrayList<Offer>();
 	
@@ -21,7 +22,16 @@ public class Product
 	{
 		this.sku = sku;
 		this.standardPrice = standardPrice;
-		this.quantityToBePaidFor = 0;
+		resetQuantityToBePaidFor();
+	}
+	
+	/**
+	 * Reset quantity to be paid for.
+	 */
+	public void resetQuantityToBePaidFor()
+	{
+		quantityToBePaidFor = 0;
+		quantityFree = 0;
 	}
 	
 	/**
@@ -41,22 +51,11 @@ public class Product
 	}
 	
 	/**
-	 * Decrement quantity to be paid for due to offer.
+	 * Increment quantity free due to offer.
 	 */
-	public void decrementQuantityToBePaidFor()
+	public void incrementQuantityFree()
 	{
-		if (quantityToBePaidFor > 0)
-		{
-			quantityToBePaidFor--;
-		}
-	}
-	
-	/**
-	 * Reset quantity to be paid for.
-	 */
-	public void resetQuantityToBePaidFor()
-	{
-		quantityToBePaidFor = 0;
+		quantityFree++;
 	}
 	
 	/**
@@ -73,17 +72,17 @@ public class Product
 				final Product productToDecrement = offerBuyXGetYFree.getProductFree();
 				final int quantityNeeded = offerBuyXGetYFree.getQuantityNeeded();
 				System.out.println("Got OfferBuyXGetYFree: quantityNeeded = " + quantityNeeded);
-				System.out.println("Got OfferBuyXGetYFree: productToDecrement = " + productToDecrement.sku);
+				System.out.println("Got OfferBuyXGetYFree: productToAllowFree = " + productToDecrement.sku);
 				int quantityPurchased = quantityToBePaidFor;
 				while (quantityPurchased >= quantityNeeded)
 				{
-					productToDecrement.decrementQuantityToBePaidFor();
+					productToDecrement.incrementQuantityFree();
 					quantityPurchased -= quantityNeeded;
 				}
 			}
 		}
 		
-		int remainingQuantityToBePaidFor = quantityToBePaidFor;
+		int remainingQuantityToBePaidFor = quantityToBePaidFor - quantityFree;
 		int priceToBePaid = 0;
 		
 		// Apply all "multiple buy price" offers
@@ -107,6 +106,7 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
 
 
 
