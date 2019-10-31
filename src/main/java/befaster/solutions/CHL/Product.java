@@ -74,10 +74,21 @@ public class Product
 				System.out.println("Got OfferBuyXGetYFree: quantityNeeded = " + quantityNeeded);
 				System.out.println("Got OfferBuyXGetYFree: productToAllowFree = " + productToAllowFree.sku);
 				int quantityPurchased = quantityToBePaidFor;
-				while (quantityPurchased >= quantityNeeded)
+				if (productToAllowFree == this)
 				{
-					productToAllowFree.incrementQuantityFree();
-					quantityPurchased -= quantityNeeded;
+					while (quantityPurchased > quantityNeeded)
+					{
+						productToAllowFree.incrementQuantityFree();
+						quantityPurchased -= quantityNeeded;
+					}
+				}
+				else
+				{
+					while (quantityPurchased >= quantityNeeded)
+					{
+						productToAllowFree.incrementQuantityFree();
+						quantityPurchased -= quantityNeeded;
+					}
 				}
 			}
 		}
@@ -112,4 +123,3 @@ public class Product
 		return priceToBePaid;
 	}
 }
-

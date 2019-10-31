@@ -93,5 +93,3 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
-
-
