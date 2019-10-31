@@ -3,10 +3,13 @@ package befaster.solutions.SUM;
 import befaster.runner.SolutionNotImplementedException;
 
 @SuppressWarnings("unused")
-public class SumSolution {
+public class SumSolution
+{
 
-    public int compute(int x, int y) {
-        throw new SolutionNotImplementedException();
+    public int compute(int x, int y)
+    {
+    	return x + y;
     }
 
 }
+
