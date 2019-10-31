@@ -24,7 +24,20 @@ public class Product
 		this.offerPrice = offerPrice;
 		this.quanityInBasket = 0;
 	}
+	
+	/**
+	 * Construct a new Product with SKU and standard price.
+	 * 
+	 * @param sku Product SKU;
+	 * @param standardPrice Standard price.
+	 */
+	public Product(final String sku, final int standardPrice)
+	{
+		this(sku, standardPrice, 0, 0);
+		this.quanityInBasket = 0;
+	}
 
 }
+
 
 
