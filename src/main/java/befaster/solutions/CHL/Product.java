@@ -59,9 +59,9 @@ public class Product
 	}
 	
 	/**
-	 * Calculate the total price for this product based on quantity in Basket , standard price and offers.
+	 * Apply the "buy quantity X , get product Y free" offers to THIS product , which may update quantities in OTHER products.
 	 */
-	public int calculateTotalPrice()
+	public void applyOfferBuyXGetYFree()
 	{
 		// Apply all "buy quantity X , get product Y free" offers
 		for (Offer offer : offers)
@@ -81,7 +81,13 @@ public class Product
 				}
 			}
 		}
-		
+	}
+	
+	/**
+	 * Calculate the total price for this product based on quantity in Basket , standard price and offers.
+	 */
+	public int calculateTotalPrice()
+	{
 		int remainingQuantityToBePaidFor = quantityToBePaidFor - quantityFree;
 		int priceToBePaid = 0;
 		
@@ -106,8 +112,3 @@ public class Product
 		return priceToBePaid;
 	}
 }
-
-
-
-
-
