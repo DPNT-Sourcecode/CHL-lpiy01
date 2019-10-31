@@ -7,7 +7,7 @@ public class Product
 {
 	private final String sku;
 	private final int standardPrice;
-	private int quanityToBePaidFor;
+	private int quantityToBePaidFor;
 	
 	private final List<Offer> offers = new ArrayList<Offer>();
 	
@@ -21,7 +21,7 @@ public class Product
 	{
 		this.sku = sku;
 		this.standardPrice = standardPrice;
-		this.quanityToBePaidFor = 0;
+		this.quantityToBePaidFor = 0;
 	}
 	
 	/**
@@ -33,19 +33,27 @@ public class Product
 	}
 	
 	/**
-	 * Increment the quantity in Basket.
+	 * Increment quantity to be paid for.
 	 */
 	public void incrementQuantityToBePaidFor()
 	{
-		quanityToBePaidFor++;
+		quantityToBePaidFor++;
 	}
 	
 	/**
-	 * Reset quantity in Basket.
+	 * Decrement quantity to be paid for due to offer.
 	 */
-	public void resetQuanityInBasket()
+	public void decrementQuantityToBePaidFor()
 	{
-		quanityToBePaidFor = 0;
+		quantityToBePaidFor++;
+	}
+	
+	/**
+	 * Reset quantity to be paid for.
+	 */
+	public void resetQuanityToBePaidFor()
+	{
+		quantityToBePaidFor = 0;
 	}
 	
 	/**
@@ -53,7 +61,7 @@ public class Product
 	 */
 	public int calculateTotalPrice()
 	{
-		int remainingQuantityToBePaidFor = quanityToBePaidFor;
+		int remainingQuantityToBePaidFor = quantityToBePaidFor;
 		
 		// Apply all "buy X get Y free" offers
 		for (Offer offer : offers)
@@ -97,5 +105,6 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
 
 
