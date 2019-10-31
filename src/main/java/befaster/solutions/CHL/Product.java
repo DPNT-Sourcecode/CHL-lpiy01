@@ -46,6 +46,14 @@ public class Product
 	}
 	
 	/**
+	 * Reset quantity in Basket.
+	 */
+	public void resetQuanityInBasket()
+	{
+		quanityInBasket = 0;
+	}
+	
+	/**
 	 * Calculate the total price for this product based on quantity in Basket , standard price , offer quantity and offer price.
 	 */
 	public int calculateTotalPrice()
@@ -62,5 +70,6 @@ public class Product
 		}
 	}
 }
+
 
 
