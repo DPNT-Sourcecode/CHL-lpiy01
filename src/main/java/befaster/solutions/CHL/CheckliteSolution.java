@@ -1,6 +1,8 @@
 package befaster.solutions.CHL;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import befaster.runner.SolutionNotImplementedException;
 
@@ -41,7 +43,17 @@ public class CheckliteSolution
     		if (product == null) return ILLEGAL_INPUT;
     		product.incrementQuanityInBasket();
     	}
-    	return 0;
+    	
+    	// Calculate grand total using quantities for each product.
+    	int grandTotal = 0;
+    	Iterator<Map.Entry<String, Product>> iterator = priceTable.entrySet().iterator();
+    	while (iterator.hasNext())
+    	{
+    		Map.Entry<String, Product> entry = iterator.next();
+    		grandTotal += entry.getValue().calculateTotalPrice();
+    	}
+    	return grandTotal;
     }
 }
+
 
