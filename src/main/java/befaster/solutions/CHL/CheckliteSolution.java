@@ -67,7 +67,7 @@ public class CheckliteSolution
     		final String sku = Character.toString(skus.charAt(i));
     		Product product = priceTable.get(sku);
     		if (product == null) return ILLEGAL_INPUT;
-    		product.incrementQuanityInBasket();
+    		product.incrementQuantityToBePaidFor();
     	}
     	
     	// Calculate grand total using quantities for each product.
@@ -81,5 +81,6 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
+
 
 
