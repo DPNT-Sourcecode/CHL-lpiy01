@@ -20,8 +20,13 @@ public class CheckliteSolution
 	private HashMap<String, Product> buildPriceTable()
 	{
 		HashMap<String, Product> priceTable = new HashMap<String, Product>();
-		priceTable.put("A", new Product("A", 50, 3, 130));
-		priceTable.put("B", new Product("B", 30, 2, 45));
+		final Product productA = new Product("A", 50);
+		productA.addOfferToProduct(new OfferMultiBuyPrice(5, 200));
+		productA.addOfferToProduct(new OfferMultiBuyPrice(3, 130));
+		priceTable.put("A", productA);
+		
+		
+		priceTable.put("B", new Product("B", 30));
 		priceTable.put("C", new Product("C", 20));
 		priceTable.put("D", new Product("D", 15));
 		return priceTable;
@@ -70,3 +75,4 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
+
