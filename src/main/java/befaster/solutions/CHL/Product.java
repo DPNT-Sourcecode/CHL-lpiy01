@@ -122,4 +122,10 @@ public class Product
 
 		return priceToBePaid;
 	}
+	
+	public String getSku()
+	{
+		return sku;
+	}
 }
+

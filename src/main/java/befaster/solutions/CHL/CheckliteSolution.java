@@ -78,32 +78,19 @@ public class CheckliteSolution
 		productTable[15].addOfferToProduct(new OfferMultiBuyPrice(5, 200));
 		// Product Q offers
 		productTable[16].addOfferToProduct(new OfferMultiBuyPrice(3, 80));
-		
-		
-		
-		
-		
-		
+		// Product R offers
+		productTable[17].addOfferToProduct(new OfferBuyXGetYFree(3, productTable[16]));
+		// Product U offers
+		productTable[20].addOfferToProduct(new OfferBuyXGetYFree(3, productTable[20]));
+		// Product V offers
+		productTable[21].addOfferToProduct(new OfferMultiBuyPrice(3, 130));
+		productTable[21].addOfferToProduct(new OfferMultiBuyPrice(2, 90));
+				
 		HashMap<String, Product> priceTable = new HashMap<String, Product>();
-		final Product productA = new Product("A", 50);
-		productA.addOfferToProduct(new OfferMultiBuyPrice(5, 200));
-		productA.addOfferToProduct(new OfferMultiBuyPrice(3, 130));
-		priceTable.put("A", productA);
-		
-		final Product productB = new Product("B", 30);
-		productB.addOfferToProduct(new OfferMultiBuyPrice(2, 45));
-		priceTable.put("B", productB);
-		
-		priceTable.put("C", new Product("C", 20));
-		priceTable.put("D", new Product("D", 15));
-		
-		final Product productE = new Product("E", 40);
-		productE.addOfferToProduct(new OfferBuyXGetYFree(2, productB));
-		priceTable.put("E", productE);
-		
-		final Product productF = new Product("F", 10);
-		productF.addOfferToProduct(new OfferBuyXGetYFree(2, productF));
-		priceTable.put("F", productF);
+		for (Product product : productTable)
+		{
+			priceTable.put(product.getSku(), product);
+		}
 		return priceTable;
 	}
 	
@@ -158,4 +145,5 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
+
 
