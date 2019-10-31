@@ -36,5 +36,11 @@ public class Product
 		this(sku, standardPrice, 0, 0);
 		this.quanityInBasket = 0;
 	}
+	
+	public void incrementQuanityInBasket()
+	{
+		quanityInBasket++;
+	}
 
 }
+

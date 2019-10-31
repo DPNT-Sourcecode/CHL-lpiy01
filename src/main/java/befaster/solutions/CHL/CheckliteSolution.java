@@ -33,12 +33,15 @@ public class CheckliteSolution
     	if (skus == null) return ILLEGAL_INPUT;
     	if (skus.length() == 0) return ILLEGAL_INPUT;
     	
+    	// Loop through the list of SKUS , and set quantities for each product.
     	for (int i = 0; i < skus.length(); i++)
     	{
     		final String sku = Character.toString(skus.charAt(i));
     		Product product = priceTable.get(sku);
     		if (product == null) return ILLEGAL_INPUT;
+    		product.incrementQuanityInBasket();
     	}
     	return 0;
     }
 }
+
