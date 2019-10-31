@@ -16,9 +16,10 @@ public class CheckliteSolutionTest
     }
 
 	@Test
-	public void testAAA()
+	public void test1()
 	{
 		System.out.println(sut.checklite("EEB"));
 	}
 
 }
+

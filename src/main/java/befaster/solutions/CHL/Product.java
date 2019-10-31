@@ -64,27 +64,24 @@ public class Product
 	 */
 	public int calculateTotalPrice()
 	{
-		int remainingQuantityToBePaidFor = quantityToBePaidFor;
-		
 		// Apply all "buy quantity X , get product Y free" offers
 		for (Offer offer : offers)
 		{
 			if (offer instanceof OfferBuyXGetYFree)
 			{
 				final OfferBuyXGetYFree offerBuyXGetYFree = (OfferBuyXGetYFree)offer;
+				final Product productToDecrement = ((OfferBuyXGetYFree) offer).getProductFree();
 				final int quantityNeeded = offerBuyXGetYFree.getQuantityNeeded();
-				if (remainingQuantityToBePaidFor > quantityNeeded)
+				int quantityPurchased = quantityToBePaidFor;
+				while (quantityPurchased >= quantityNeeded)
 				{
-					int maxQuantityFree = offerBuyXGetYFree.getQuantityFree();
-					while (maxQuantityFree > 0 && remainingQuantityToBePaidFor > 0)
-					{
-						maxQuantityFree--;
-						remainingQuantityToBePaidFor--;
-					}
+					productToDecrement.decrementQuantityToBePaidFor();
+					quantityPurchased -= quantityNeeded;
 				}
 			}
 		}
 		
+		int remainingQuantityToBePaidFor = quantityToBePaidFor;
 		int priceToBePaid = 0;
 		
 		// Apply all "multiple buy price" offers
@@ -108,3 +105,4 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
