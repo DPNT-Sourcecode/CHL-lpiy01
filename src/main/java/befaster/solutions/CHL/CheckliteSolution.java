@@ -28,12 +28,27 @@ public class CheckliteSolution
 	}
 	
 	/**
+	 * Reset the quantities stored in the price table.
+	 */
+	private void resetQuantitiesInPriceTable()
+	{
+    	Iterator<Map.Entry<String, Product>> iterator = priceTable.entrySet().iterator();
+    	while (iterator.hasNext())
+    	{
+    		Map.Entry<String, Product> entry = iterator.next();
+    		entry.getValue().resetQuanityInBasket();
+    	}
+	}
+	
+	/**
 	 * Calculate price of list of SKUs , or return -1 if any invalid characters.
 	 */
     public Integer checklite(String skus)
     {
     	if (skus == null) return ILLEGAL_INPUT;
-    	if (skus.length() == 0) return ILLEGAL_INPUT;
+    	if (skus.length() == 0) return 0;
+    	
+    	resetQuantitiesInPriceTable();
     	
     	// Loop through the list of SKUS , and set quantities for each product.
     	for (int i = 0; i < skus.length(); i++)
@@ -55,5 +70,3 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
-
-
