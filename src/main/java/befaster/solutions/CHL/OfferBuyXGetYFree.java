@@ -1,7 +1,7 @@
 package befaster.solutions.CHL;
 
 /**
- * Class representing a "buy X get Y free" offer.
+ * Class representing a "buy X get product Y free" offer.
  */
 public class OfferBuyXGetYFree implements Offer
 {
@@ -9,7 +9,7 @@ public class OfferBuyXGetYFree implements Offer
 	private final int quantityFree;
 	
 	/**
-	 * Construct a new "buy X get Y free" offer.
+	 * Construct a new "buy X get product Y free" offer.
 	 * 
 	 * @param quantityNeeded Quantity which must be purchased before this offer can be applied.
 	 * @param quantityFree Quantity which can be free.
@@ -30,3 +30,4 @@ public class OfferBuyXGetYFree implements Offer
 		return quantityFree;
 	}
 }
+
