@@ -69,10 +69,11 @@ public class Product
 		{
 			if (offer instanceof OfferBuyXGetYFree)
 			{
-				System.out.println("Got OfferBuyXGetYFree");
 				final OfferBuyXGetYFree offerBuyXGetYFree = (OfferBuyXGetYFree)offer;
-				final Product productToDecrement = ((OfferBuyXGetYFree) offer).getProductFree();
+				final Product productToDecrement = offerBuyXGetYFree.getProductFree();
 				final int quantityNeeded = offerBuyXGetYFree.getQuantityNeeded();
+				System.out.println("Got OfferBuyXGetYFree: quantityNeeded = " + quantityNeeded);
+				System.out.println("Got OfferBuyXGetYFree: productToDecrement = " + productToDecrement.sku);
 				int quantityPurchased = quantityToBePaidFor;
 				while (quantityPurchased >= quantityNeeded)
 				{
@@ -106,5 +107,6 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
 
 
