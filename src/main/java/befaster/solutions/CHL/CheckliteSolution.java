@@ -6,6 +6,8 @@ import befaster.runner.SolutionNotImplementedException;
 
 public class CheckliteSolution
 {
+	private final static int ILLEGAL_INPUT = -1;
+	
 	private HashMap<String, Product> priceTable = buildPriceTable();
 	
 	/**
@@ -23,11 +25,20 @@ public class CheckliteSolution
 		return priceTable;
 	}
 	
+	/**
+	 * Calculate price of list of SKUs , or return -1 if any invalid characters.
+	 */
     public Integer checklite(String skus)
     {
-    	System.out.println(skus);
+    	if (skus == null) return ILLEGAL_INPUT;
+    	if (skus.length() == 0) return ILLEGAL_INPUT;
+    	
+    	for (int i = 0; i < skus.length(); i++)
+    	{
+    		final String sku = Character.toString(skus.charAt(i));
+    		Product product = priceTable.get(sku);
+    		if (product == null) return ILLEGAL_INPUT;
+    	}
     	return 0;
     }
 }
-
-
