@@ -88,7 +88,7 @@ public class Product
 	 */
 	public int calculateTotalPrice()
 	{
-		int remainingQuantityToBePaidFor = quantityToBePaidFor - quantityFree;
+		int remainingQuantityToBePaidFor = Math.max(0, quantityToBePaidFor - quantityFree);
 		int priceToBePaid = 0;
 		
 		// Apply all "multiple buy price" offers
@@ -112,3 +112,4 @@ public class Product
 		return priceToBePaid;
 	}
 }
+

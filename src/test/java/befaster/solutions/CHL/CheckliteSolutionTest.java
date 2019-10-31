@@ -18,8 +18,9 @@ public class CheckliteSolutionTest
 	@Test
 	public void test1()
 	{
-		System.out.println(sut.checklite("EEEEB"));
+		System.out.println(sut.checklite("EE"));
 	}
 
 }
+
 
