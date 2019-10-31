@@ -35,6 +35,10 @@ public class CheckliteSolution
 		final Product productE = new Product("E", 40);
 		productE.addOfferToProduct(new OfferBuyXGetYFree(2, productB));
 		priceTable.put("E", productE);
+		
+		final Product productF = new Product("F", 10);
+		productF.addOfferToProduct(new OfferBuyXGetYFree(2, productF));
+		priceTable.put("F", productF);
 		return priceTable;
 	}
 	
@@ -89,4 +93,5 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
+
 
