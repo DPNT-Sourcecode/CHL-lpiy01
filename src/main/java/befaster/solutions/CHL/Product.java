@@ -1,29 +1,15 @@
 package befaster.solutions.CHL;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product
 {
 	private final String sku;
 	private final int standardPrice;
-	private final int offerQuantity;
-	private final int offerPrice;
 	private int quanityInBasket;
 	
-	/**
-	 * Construct a new Product with SKU , standard price , offer quantity and offer price.
-	 * 
-	 * @param sku Product SKU;
-	 * @param standardPrice Standard price.
-	 * @param offerQuantity Offer quantity , or zero if no special offers.
-	 * @param offerPrice Offer price , or zero if no special offers.
-	 */
-	public Product(final String sku, final int standardPrice, final int offerQuantity, final int offerPrice)
-	{
-		this.sku = sku;
-		this.standardPrice = standardPrice;
-		this.offerQuantity = offerQuantity;
-		this.offerPrice = offerPrice;
-		this.quanityInBasket = 0;
-	}
+	private final List<Offer> offers = new ArrayList<Offer>();
 	
 	/**
 	 * Construct a new Product with SKU and standard price.
@@ -33,8 +19,17 @@ public class Product
 	 */
 	public Product(final String sku, final int standardPrice)
 	{
-		this(sku, standardPrice, 0, 0);
+		this.sku = sku;
+		this.standardPrice = standardPrice;
 		this.quanityInBasket = 0;
+	}
+	
+	/**
+	 * Add an offer to this product.
+	 */
+	public void addOfferToProduct(final Offer offer)
+	{
+		offers.add(offer);
 	}
 	
 	/**
@@ -58,15 +53,8 @@ public class Product
 	 */
 	public int calculateTotalPrice()
 	{
-		if (offerQuantity == 0 || offerPrice == 0)
-		{
-			return quanityInBasket * standardPrice;
-		}
-		else
-		{
-			final int numberOfSpecialOffers = quanityInBasket / offerQuantity;
-			final int numberOfStandards = quanityInBasket % offerQuantity;
-			return (numberOfSpecialOffers * offerPrice) + (numberOfStandards * standardPrice);
-		}
+		//TODO: Offers to be applied before returning price.
+		return quanityInBasket * standardPrice;
+
 	}
 }

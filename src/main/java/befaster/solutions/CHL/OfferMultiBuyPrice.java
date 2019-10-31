@@ -30,4 +30,3 @@ public class OfferMultiBuyPrice implements Offer
 		return offerPrice;
 	}
 }
-
