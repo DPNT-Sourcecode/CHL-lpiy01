@@ -81,7 +81,6 @@ public class Product
 		{
 			if (offer instanceof OfferMultiBuyPrice)
 			{
-				System.out.println("Got OfferMultiBuyPrice");
 				final OfferMultiBuyPrice offerMultiBuyPrice = (OfferMultiBuyPrice)offer;
 				int offerQuantity = offerMultiBuyPrice.getOfferQuantity();
 				int offerPrice = offerMultiBuyPrice.getOfferPrice();
@@ -98,3 +97,4 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
