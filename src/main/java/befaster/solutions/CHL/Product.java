@@ -37,10 +37,30 @@ public class Product
 		this.quanityInBasket = 0;
 	}
 	
+	/**
+	 * Increment the quantity in Basket.
+	 */
 	public void incrementQuanityInBasket()
 	{
 		quanityInBasket++;
 	}
-
+	
+	/**
+	 * Calculate the total price for this product based on quantity in Basket , standard price , offer quantity and offer price.
+	 */
+	public int calculateTotalPrice()
+	{
+		if (offerQuantity == 0 || offerPrice == 0)
+		{
+			return quanityInBasket * standardPrice;
+		}
+		else
+		{
+			final int numberOfSpecialOffers = quanityInBasket / offerQuantity;
+			final int numberOfStandards = quanityInBasket % offerQuantity;
+			return (numberOfSpecialOffers * offerPrice) + (numberOfStandards * standardPrice);
+		}
+	}
 }
+
 
