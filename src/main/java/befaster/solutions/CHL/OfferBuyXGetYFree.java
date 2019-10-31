@@ -30,5 +30,3 @@ public class OfferBuyXGetYFree implements Offer
 		return product;
 	}
 }
-
-

@@ -47,7 +47,7 @@ public class CheckliteSolution
     	while (iterator.hasNext())
     	{
     		Map.Entry<String, Product> entry = iterator.next();
-    		entry.getValue().resetQuanityInBasket();
+    		entry.getValue().resetQuantityToBePaidFor();
     	}
 	}
 	
@@ -81,6 +81,3 @@ public class CheckliteSolution
     	return grandTotal;
     }
 }
-
-
-

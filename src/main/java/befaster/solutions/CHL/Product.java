@@ -45,13 +45,16 @@ public class Product
 	 */
 	public void decrementQuantityToBePaidFor()
 	{
-		quantityToBePaidFor++;
+		if (quantityToBePaidFor > 0)
+		{
+			quantityToBePaidFor--;
+		}
 	}
 	
 	/**
 	 * Reset quantity to be paid for.
 	 */
-	public void resetQuanityToBePaidFor()
+	public void resetQuantityToBePaidFor()
 	{
 		quantityToBePaidFor = 0;
 	}
@@ -63,7 +66,7 @@ public class Product
 	{
 		int remainingQuantityToBePaidFor = quantityToBePaidFor;
 		
-		// Apply all "buy X get Y free" offers
+		// Apply all "buy quantity X , get product Y free" offers
 		for (Offer offer : offers)
 		{
 			if (offer instanceof OfferBuyXGetYFree)
@@ -105,6 +108,3 @@ public class Product
 		return priceToBePaid;
 	}
 }
-
-
-
