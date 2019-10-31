@@ -49,12 +49,52 @@ public class Product
 	}
 	
 	/**
-	 * Calculate the total price for this product based on quantity in Basket , standard price , offer quantity and offer price.
+	 * Calculate the total price for this product based on quantity in Basket , standard price and offers.
 	 */
 	public int calculateTotalPrice()
 	{
-		//TODO: Offers to be applied before returning price.
-		return quanityInBasket * standardPrice;
+		int remainingQuantityToBePaidFor = quanityInBasket;
+		
+		// Apply all "buy X get Y free" offers
+		for (Offer offer : offers)
+		{
+			if (offer instanceof OfferBuyXGetYFree)
+			{
+				final OfferBuyXGetYFree offerBuyXGetYFree = (OfferBuyXGetYFree)offer;
+				final int quantityNeeded = offerBuyXGetYFree.getQuantityNeeded();
+				if (remainingQuantityToBePaidFor > quantityNeeded)
+				{
+					int maxQuantityFree = offerBuyXGetYFree.getQuantityFree();
+					while (maxQuantityFree > 0 && remainingQuantityToBePaidFor > 0)
+					{
+						maxQuantityFree--;
+						remainingQuantityToBePaidFor--;
+					}
+				}
+			}
+		}
+		
+		int priceToBePaid = 0;
+		
+		// Apply all "multiple buy price" offers
+		for (Offer offer : offers)
+		{
+			if (offer instanceof OfferMultiBuyPrice)
+			{
+				final OfferMultiBuyPrice offerMultiBuyPrice = (OfferMultiBuyPrice)offer;
+				int offerQuantity = offerMultiBuyPrice.getOfferQuantity();
+				int offerPrice = offerMultiBuyPrice.getOfferPrice();
+				while (remainingQuantityToBePaidFor > offerQuantity)
+				{
+					remainingQuantityToBePaidFor -= offerQuantity;
+					priceToBePaid += offerPrice;
+				}
+			}
+		}
+		
+		priceToBePaid += (remainingQuantityToBePaidFor * standardPrice);
 
+		return priceToBePaid;
 	}
 }
+
