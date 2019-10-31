@@ -29,7 +29,6 @@ public class Product
 	 */
 	public void addOfferToProduct(final Offer offer)
 	{
-		System.out.println("DEBUG: Adding offer to product");
 		offers.add(offer);
 	}
 	
@@ -82,10 +81,11 @@ public class Product
 		{
 			if (offer instanceof OfferMultiBuyPrice)
 			{
+				System.out.println("Got OfferMultiBuyPrice");
 				final OfferMultiBuyPrice offerMultiBuyPrice = (OfferMultiBuyPrice)offer;
 				int offerQuantity = offerMultiBuyPrice.getOfferQuantity();
 				int offerPrice = offerMultiBuyPrice.getOfferPrice();
-				while (remainingQuantityToBePaidFor > offerQuantity)
+				while (remainingQuantityToBePaidFor >= offerQuantity)
 				{
 					remainingQuantityToBePaidFor -= offerQuantity;
 					priceToBePaid += offerPrice;
@@ -98,5 +98,3 @@ public class Product
 		return priceToBePaid;
 	}
 }
-
-
