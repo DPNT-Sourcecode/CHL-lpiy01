@@ -6,7 +6,8 @@ public class HelloSolution
 {
     public String hello(String friendName)
     {
-    	return "hello to the world";
+    	return "Hello, World!";
     }
 }
+
 
