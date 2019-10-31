@@ -69,6 +69,7 @@ public class Product
 		{
 			if (offer instanceof OfferBuyXGetYFree)
 			{
+				System.out.println("Got OfferBuyXGetYFree");
 				final OfferBuyXGetYFree offerBuyXGetYFree = (OfferBuyXGetYFree)offer;
 				final Product productToDecrement = ((OfferBuyXGetYFree) offer).getProductFree();
 				final int quantityNeeded = offerBuyXGetYFree.getQuantityNeeded();
@@ -105,4 +106,5 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
 
