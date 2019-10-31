@@ -29,6 +29,7 @@ public class Product
 	 */
 	public void addOfferToProduct(final Offer offer)
 	{
+		System.out.println("DEBUG: Adding offer to product");
 		offers.add(offer);
 	}
 	
@@ -97,4 +98,5 @@ public class Product
 		return priceToBePaid;
 	}
 }
+
 
